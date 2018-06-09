@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="panel-footer clearfix">
-                    <button type="submit" class="button btn-primary mr10 pull-right">Register</button>
+                    <button type="submit" class="button btn-primary mr10 pull-right">Registro</button>
                 </div>
 
             </form>

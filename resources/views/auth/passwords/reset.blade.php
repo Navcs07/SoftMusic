@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="panel-footer clearfix">
-                    <button type="submit" class="button btn-primary mr10 pull-right">Reset Password</button>
+                    <button type="submit" class="button btn-primary mr10 pull-right">Restablecer la contraseña</button>
                 </div>
 
             </form>

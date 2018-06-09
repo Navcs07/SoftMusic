@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="panel-footer clearfix">
-                    <button type="submit" class="button btn-primary mr10 pull-right">Send Password Reset Link</button>
+                    <button type="submit" class="button btn-primary mr10 pull-right">Enviar enlace instrucciones de acceso</button>
                 </div>
 
             </form>

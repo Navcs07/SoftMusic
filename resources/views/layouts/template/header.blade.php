@@ -3,7 +3,7 @@
 
     <div class="navbar-branding">
         <a class="navbar-brand" href="{{ route('dashboard') }}">
-            <b>Admin</b>Designs
+            {{ config('app.name', 'Laravel') }}
         </a>
         <span id="toggle_sidemenu_l" class="ad ad-lines"></span>
     </div>
@@ -15,18 +15,6 @@
                 <span class="caret caret-tp hidden-xs"></span>
             </a>
             <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
-                <li class="list-group-item">
-                    <a href="#" class="animated animated-short fadeInUp">
-                        <span class="fa fa-envelope"></span> Messages
-                        <span class="label label-warning">2</span>
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <a href="#" class="animated animated-short fadeInUp">
-                        <span class="fa fa-user"></span> Friends
-                        <span class="label label-warning">6</span>
-                    </a>
-                </li>
                 <li class="list-group-item">
                     <a href="#" class="animated animated-short fadeInUp">
                         <span class="fa fa-gear"></span> Account Settings </a>

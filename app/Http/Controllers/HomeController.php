@@ -13,6 +13,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        return view('web.home');
+    }
+
+    public function apps()
+    {
+        return view('web.apps');
     }
 }

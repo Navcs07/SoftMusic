@@ -87,6 +87,9 @@
     <!-- Datatables Bootstrap Modifications  -->
     <script src="{{ asset('vendor/plugins/datatables/media/js/dataTables.bootstrap.js') }}"></script>
 
+    <!-- CKeditor -->
+    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
 
     <script>

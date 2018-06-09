@@ -13,21 +13,28 @@
 
 Auth::routes();
 
+Route::prefix('')->group(function () {
+
+    Route::get('/', 'HomeController@index')->name('home');
+
+    Route::get('/apps', 'HomeController@apps')->name('apps');
+});
+
 Route::middleware('auth')->group(function () {
 
-    Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::prefix('backend')->namespace('Backend')->group(function () {
 
-    Route::prefix('user')->group(function () {
+        Route::get('/', 'BackendController@index')->name('dashboard');
 
-        Route::get('/', 'UserController@index')->name('user.index');
-        Route::get('create', 'UserController@create')->name('user.create');
-        Route::post('store', 'UserController@store')->name('user.store');
-        Route::get('edit/{id}', 'UserController@edit')->name('user.edit');
-        Route::put('update/{id}', 'UserController@update')->name('user.update');
-        Route::delete('delete/{id}', 'UserController@destroy')->name('user.delete');
+        Route::prefix('user')->group(function () {
+
+            Route::get('/', 'UserController@index')->name('user.index');
+            Route::get('create', 'UserController@create')->name('user.create');
+            Route::post('store', 'UserController@store')->name('user.store');
+            Route::get('edit/{id}', 'UserController@edit')->name('user.edit');
+            Route::put('update/{id}', 'UserController@update')->name('user.update');
+            Route::delete('delete/{id}', 'UserController@destroy')->name('user.delete');
+        });
     });
-
-    // all routes
-    // ...
 
 });

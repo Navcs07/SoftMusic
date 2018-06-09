@@ -28,12 +28,7 @@
                 </div>
 
                 <div class="panel-footer clearfix">
-                    <button type="submit" class="button btn-primary mr10 pull-right">Sign In</button>
-                    <label class="switch ib switch-primary mt10">
-                        <input type="checkbox" name="remember" id="remember" checked>
-                        <label for="remember" data-on="YES" data-off="NO"></label>
-                        <span>Remember me</span>
-                    </label>
+                    <button type="submit" class="button btn-primary mr10 pull-right">Acceder</button>
                 </div>
 
             </form>
@@ -42,7 +37,7 @@
         <!-- Registration Links -->
         <div class="login-links">
             <p>
-                <a href="{{ route('password.request') }}" class="active" title="Sign In">Forgot Password?</a>
+                <a href="{{ route('password.request') }}" class="active" title="Sign In">¿Se te olvidó tu contraseña?</a>
             </p>
         </div>
 
