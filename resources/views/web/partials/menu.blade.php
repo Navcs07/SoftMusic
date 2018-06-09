@@ -1,6 +1,6 @@
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
-        <li class="active">
+        <li>
             <a class="page-scroll" href="{{ route('home') }}">Inicio</a>
         </li>
         <li>
@@ -11,9 +11,11 @@
         </li>
         @if(Auth::check())
 
-            <li>
-                <a class="page-scroll" href="{{ route('dashboard') }}">Panel Administrativo</a>
-            </li>
+            @role('Admin')
+                <li>
+                    <a class="page-scroll" href="{{ route('dashboard') }}">Panel Administrativo</a>
+                </li>
+            @endrole
 
             <li>
                 <a class="page-scroll" href="{{ route('logout') }} "

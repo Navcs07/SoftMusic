@@ -6,10 +6,10 @@
     </li>
 
     <li class="crumb-link">
-        <a href="{{ route('user.index') }}">Users</a>
+        <a href="{{ route('user.index') }}">Usuarios</a>
     </li>
 
-    <li class="crumb-trail">Create</li>
+    <li class="crumb-trail">Crear nuevo</li>
 @stop
 
 @section('content')
@@ -19,7 +19,7 @@
         <!-- Begin: Content Header -->
         <div class="content-header">
             <div align="right">
-                <a href="{{ route('user.index') }}" class="btn btn-info animated zoomIn">Return</a>
+                <a href="{{ route('user.index') }}" class="btn btn-dark animated zoomIn"><strong>Regresar</strong></a>
             </div>
         </div>
 
@@ -30,7 +30,7 @@
                 <div class="panel-body bg-light">
 
                     <div class="section-divider mb40" id="spy1">
-                        <span>Create User</span>
+                        <span>Crear nuevo</span>
                     </div>
 
                     {!! Form::open(['route' => 'user.store', 'method' => 'POST']) !!}
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="panel-footer">
-                            <button type="submit" class="button btn-primary">Save</button>
+                            <button type="submit" class="button btn-primary"><strong>Guardar</strong></button>
                         </div>
 
                     {!! Form::close() !!}

@@ -55,7 +55,9 @@ class UserController extends Controller
 
         $user = $this->user->create($request->all());
 
-        Alert::success(trans('User create'));
+        $user->roles()->attach(2); // user
+
+        Alert::success('Usuario creado');
 
         return redirect()->route('user.index');
     }
@@ -103,7 +105,7 @@ class UserController extends Controller
 
         $user->update($request->all());
 
-        Alert::success(trans('User edit'));
+        Alert::success('Usuario actualizado');
 
         return redirect()->route('user.index');
     }
@@ -121,7 +123,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        $message = 'User delete';
+        $message = 'Usuario eliminado';
 
         if ($request->ajax()) {
 

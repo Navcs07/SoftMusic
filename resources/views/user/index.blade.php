@@ -6,7 +6,7 @@
     </li>
 
     <li class="crumb-link">
-        <a href="{{ route('user.index') }}">Users</a>
+        <a href="{{ route('user.index') }}">Usuarios</a>
     </li>
 @stop
 
@@ -23,7 +23,7 @@
         <!-- Begin: Content Header -->
         <div class="content-header">
             <div align="right">
-                <a href="{{ route('user.create') }}" class="btn btn-success animated zoomIn">Create</a>
+                <a href="{{ route('user.create') }}" class="btn btn-primary animated zoomIn"><strong>Nuevo Usuario</strong></a>
             </div>
         </div>
 
@@ -34,16 +34,17 @@
 
                     <div class="section-divider mb40" id="spy1">
                         <span>
-                            <strong>User List</strong>
+                            <strong>Lista de Usuarios</strong>
                         </span>
                     </div>
                     <table class="table table-striped table-hover table" id="data-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Actions</th>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Perfil</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,6 +53,7 @@
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->getRoles() }}</td>
                                     <td class="actions-buttons">
                                         <a href="{{ route('user.edit', [$user->id]) }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top">
                                             <i class="fa fa-edit animated zoomIn"></i></a>

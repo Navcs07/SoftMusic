@@ -18,9 +18,11 @@ Route::prefix('')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::get('/apps', 'HomeController@apps')->name('apps');
+
+    Route::get('/app/{slug}', 'HomeController@app')->name('app');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::prefix('backend')->namespace('Backend')->group(function () {
 
@@ -34,6 +36,16 @@ Route::middleware('auth')->group(function () {
             Route::get('edit/{id}', 'UserController@edit')->name('user.edit');
             Route::put('update/{id}', 'UserController@update')->name('user.update');
             Route::delete('delete/{id}', 'UserController@destroy')->name('user.delete');
+        });
+
+        Route::prefix('post')->group(function () {
+
+            Route::get('/', 'PostController@index')->name('post.index');
+            Route::get('create', 'PostController@create')->name('post.create');
+            Route::post('store', 'PostController@store')->name('post.store');
+            Route::get('edit/{id}', 'PostController@edit')->name('post.edit');
+            Route::put('update/{id}', 'PostController@update')->name('post.update');
+            Route::delete('delete/{id}', 'PostController@destroy')->name('post.delete');
         });
     });
 

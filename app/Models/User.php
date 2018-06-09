@@ -35,4 +35,24 @@ class User extends Authenticatable
             $this->attributes['password'] = bcrypt($value);
         }
     }
+
+    public function getRoles()
+    {
+        $roles = [];
+
+        if ($this->roles()) {
+            $roles = $this->roles()->get();
+        }
+
+        $tmp = [];
+
+        foreach ($roles as $value)
+        {
+            $tmp[] = $value->name;
+        }
+
+        $tmp = implode(", ", $tmp);
+
+        return $tmp;
+    }
 }
