@@ -177,6 +177,7 @@ return [
         'subject'               => 'asunto',
         'message'               => 'mensaje',
         'image'                 => 'Imagen',
-        'category_id'           => 'Cátegoria'
+        'category_id'           => 'Cátegoria',
+        'link'                  => 'Enlace'
     ],
 ];

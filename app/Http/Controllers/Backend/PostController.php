@@ -60,7 +60,7 @@ class PostController extends Controller
         $this->validate($request,[
             'title'       => 'required|unique:posts,title',
             'content_1'   => 'required',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'required',
             'image'       => 'required|image'
         ]);
 
@@ -79,7 +79,14 @@ class PostController extends Controller
             $data = array_add($data, 'image_id', $image->id);
         }
 
-        $this->post->create($data);
+        try {
+
+            $this->post->create($data);
+
+        } catch (\Exception $exception) {
+
+            dd($exception->getMessage());
+        }
 
         Alert::success('Post creado');
 
@@ -114,7 +121,7 @@ class PostController extends Controller
         $this->validate($request,[
             'title'       => 'required|unique:posts,title,'.$id,
             'content_1'   => 'required',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'required',
         ]);
 
         $post = $this->post->findOrFail($id);

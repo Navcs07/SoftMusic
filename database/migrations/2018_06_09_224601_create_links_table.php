@@ -16,10 +16,10 @@ class CreateLinksTable extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->increments('id');
             $table->string('link');
+            $table->string('name');
+            $table->enum('type', ['local', 'externo'])->default('externo');
             $table->integer('post_id')->unsigned()->unsigned();
-            $table->integer('image_id')->unsigned()->nullable();
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
             $table->timestamps();
         });
     }

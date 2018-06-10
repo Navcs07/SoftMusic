@@ -57,6 +57,16 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
             Route::put('update/{id}', 'PostController@update')->name('post.update');
             Route::delete('delete/{id}', 'PostController@destroy')->name('post.delete');
         });
+
+        Route::prefix('links')->group(function () {
+
+            Route::get('/{post}', 'LinkController@index')->name('link.index');
+            Route::get('create/{post}', 'LinkController@create')->name('link.create');
+            Route::post('store/{post}', 'LinkController@store')->name('link.store');
+            Route::get('edit/{post}/{id}', 'LinkController@edit')->name('link.edit');
+            Route::put('update/{post}/{id}', 'LinkController@update')->name('link.update');
+            Route::delete('delete/{id}', 'LinkController@destroy')->name('link.delete');
+        });
     });
 
 });

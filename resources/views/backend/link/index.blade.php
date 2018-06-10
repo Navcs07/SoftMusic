@@ -6,7 +6,7 @@
     </li>
 
     <li class="crumb-link">
-        <a href="{{ route('post.index') }}">Posts</a>
+        <a href="{{ route('link.index', [$post]) }}">Enlaces</a>
     </li>
 @stop
 
@@ -19,7 +19,7 @@
         <!-- Begin: Content Header -->
         <div class="content-header">
             <div align="right">
-                <a href="{{ route('post.create') }}" class="btn btn-primary animated zoomIn"><strong>Nuevo Post</strong></a>
+                <a href="{{ route('link.create', [$post]) }}" class="btn btn-primary animated zoomIn"><strong>Nuevo Enlace</strong></a>
             </div>
         </div>
 
@@ -30,31 +30,27 @@
 
                     <div class="section-divider mb40" id="spy1">
                         <span>
-                            <strong>Lista de Posts</strong>
+                            <strong>Lista de Enlaces</strong>
                         </span>
                     </div>
                     <table class="table table-striped table-hover table" id="data-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Titulo</th>
-                                <th>Cátegoria</th>
-                                <th>Actualización</th>
+                                <th>Nombre</th>
+                                <th>Enlace</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($posts as $post)
-                                <tr data-id="{{ $post->id }}">
-                                    <td>{{ $post->id }}</td>
-                                    <td>{{ $post->title }}</td>
-                                    <td>{{ $post->category->name }}</td>
-                                    <td>{{ $post->updated_at->diffForHumans() }}</td>
+                            @foreach($links as $link)
+                                <tr data-id="{{ $link->id }}">
+                                    <td>{{ $link->id }}</td>
+                                    <td>{{ $link->name }}</td>
+                                    <td>{{ $link->link }}</td>
                                     <td class="actions-buttons">
-                                        <a href="{{ route('post.edit', [$post->id]) }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top">
+                                        <a href="{{ route('link.edit', [$post, $link->id]) }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top">
                                             <i class="fa fa-edit animated zoomIn"></i></a>
-                                        <a href="{{ route('link.index', [$post->id]) }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top">
-                                            <i class="fa fa-link animated zoomIn"></i></a>
                                         <a href="" class="btn btn-danger btn-sm btn-delete" data-toggle="tooltip" data-placement="top">
                                             <i class="fa fa-trash-o animated zoomIn"></i></a>
                                     </td>
@@ -66,7 +62,7 @@
                 </div>
             </div>
         </div>
-        {{ Form::open(['route' => ['post.delete', ':DATA_ID'], 'method' => 'delete', 'id' => 'form-delete']) }}
+        {{ Form::open(['route' => ['link.delete', ':DATA_ID'], 'method' => 'delete', 'id' => 'form-delete']) }}
         {{ Form::close()}}
     </div>
 @stop

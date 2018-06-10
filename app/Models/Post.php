@@ -7,7 +7,7 @@ use Jenssegers\Date\Date;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'slug', 'content_1', 'content_2', 'category_id', 'image_id'];
+    protected $fillable = ['title', 'slug', 'content_1', 'category_id', 'image_id'];
 
     public function category()
     {
@@ -17,6 +17,11 @@ class Post extends Model
     public function image()
     {
         return $this->belongsTo(Image::class);
+    }
+
+    public function links()
+    {
+        return $this->hasMany(Link::class);
     }
 
     public function getDates()
