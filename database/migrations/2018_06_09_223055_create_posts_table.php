@@ -19,6 +19,8 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->longText('content_1');
             $table->longText('content_2')->nullable();
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

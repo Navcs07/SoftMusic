@@ -38,6 +38,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
+                                <th>Posts</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -46,6 +47,7 @@
                                 <tr data-id="{{ $category->id }}">
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
+                                    <td>{{ $category->posts->count() }} Post</td>
                                     <td class="actions-buttons">
                                         <a href="{{ route('category.edit', [$category->id]) }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top">
                                             <i class="fa fa-edit animated zoomIn"></i></a>
