@@ -33,7 +33,7 @@
                         <span>Crear Enlace</span>
                     </div>
 
-                    {!! Form::open(['route' => ['link.store', $post], 'method' => 'POST']) !!}
+                    {!! Form::open(['route' => ['link.store', $post], 'method' => 'POST', 'files' => true]) !!}
 
                         @include('backend.link.partials.fields')
 

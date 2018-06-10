@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Image;
+use App\Models\Link;
 use Illuminate\Support\Facades\Storage;
 
 class FileManagerRepository
@@ -11,10 +12,16 @@ class FileManagerRepository
 
     private $image;
 
-    public function __construct(Image $image)
+    private $diskFiles;
+
+    private $link;
+
+    public function __construct(Image $image, Link $link)
     {
         $this->diskImages = Storage::disk('images');
+        $this->diskFiles = Storage::disk('files');
         $this->image      = $image;
+        $this->link = $link;
     }
 
 
@@ -43,6 +50,18 @@ class FileManagerRepository
         $image = $this->image->findOrFail($image_id);
 
         $this->deleteImage($image);
+    }
+
+    public function saveFile($file)
+    {
+        $file_name = $this->diskFiles->put('/', $file);
+
+        return $file_name;
+    }
+
+    public function deleteFile(Link $link)
+    {
+        $this->diskFiles->delete($link->link);
     }
 
     private function putImage($image)

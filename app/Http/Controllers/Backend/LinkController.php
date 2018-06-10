@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Link;
 use App\Models\Post;
+use App\Repositories\FileManagerRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Styde\Html\Facades\Alert;
@@ -12,9 +13,12 @@ class LinkController extends Controller
 {
     private $link;
 
-    public function __construct(Link $link)
+    private $fileManager;
+
+    public function __construct(Link $link, FileManagerRepository $fileManager)
     {
         $this->link = $link;
+        $this->fileManager = $fileManager;
     }
 
     /**
@@ -53,13 +57,14 @@ class LinkController extends Controller
         //Process
         $this->validate($request,[
             'name' => 'required',
-            'link' => 'required',
+            //'link' => 'required',
         ]);
 
         $this->link->create([
             'name'    => $request->get('name'),
-            'link'    => $request->get('link'),
+            'link'    => ($request->hasFile('file')) ? $this->fileManager->saveFile($request->file('file')) : $request->get('link'),
             'post_id' => $post->id,
+            'type'    => ($request->hasFile('file')) ? 'local' : 'externo',
         ]);
 
         Alert::success('Enlace creado');
@@ -116,6 +121,8 @@ class LinkController extends Controller
     public function destroy(Request $request, $id)
     {
         $link = $this->link->findOrFail($id);
+
+        $this->fileManager->deleteFile($link);
 
         $link->delete();
 

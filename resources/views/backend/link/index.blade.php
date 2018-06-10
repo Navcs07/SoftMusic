@@ -39,6 +39,7 @@
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Enlace</th>
+                                <th>Tipo</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -48,9 +49,10 @@
                                     <td>{{ $link->id }}</td>
                                     <td>{{ $link->name }}</td>
                                     <td>{{ $link->link }}</td>
+                                    <td>{{ $link->type }}</td>
                                     <td class="actions-buttons">
-                                        <a href="{{ route('link.edit', [$post, $link->id]) }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top">
-                                            <i class="fa fa-edit animated zoomIn"></i></a>
+                                        {{--<a href="{{ route('link.edit', [$post, $link->id]) }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top">
+                                            <i class="fa fa-edit animated zoomIn"></i></a>--}}
                                         <a href="" class="btn btn-danger btn-sm btn-delete" data-toggle="tooltip" data-placement="top">
                                             <i class="fa fa-trash-o animated zoomIn"></i></a>
                                     </td>

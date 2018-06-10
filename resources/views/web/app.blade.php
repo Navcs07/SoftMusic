@@ -34,7 +34,15 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h3 class="section-heading">Enlaces de Descarga</h3>
-                    <h3 class="section-subheading text-muted mbn">Enlaces...</h3>
+                    @foreach($post->links as $link)
+                        <h3 class="section-subheading text-muted mbn">
+                            @if($link->type == 'local')
+                                <a href="{{ asset('uploads/'.$link->link.'') }}" target="_blank">{{ $link->name }}</a>
+                            @else
+                                <a href="{{ $link->link }}" target="_blank">{{ $link->name }}</a>
+                            @endif
+                        </h3>
+                    @endforeach
                 </div>
             </div>
 
