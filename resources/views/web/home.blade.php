@@ -13,6 +13,7 @@
                             <div class="slick-slide">
                                 <a href="{{ route('app', [$post->slug]) }}" class="portfolio-link">
                                     <img src="{{ asset('uploads/'.$post->image->path.'') }}" class="img-responsive" alt="{{ $post->image->name }}">
+                                    <h4>{{ $post->title }}</h4>
                                 </a>
                             </div>
                         @endforeach

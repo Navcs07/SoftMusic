@@ -20,6 +20,10 @@
                         </a>
                         <p class="text-muted">{{ $post->category->name }}</p>
                         <p class="text-muted"><strong>Fecha: {{ $post->updated_at->diffForHumans() }}</strong></p>
+
+                        <p class="text-muted">{!! str_limit($post->content_1, 200) !!}
+                            <a href="{{ route('app', [$post->slug]) }}">Leer Mas..</a>
+                        </p>
                     </div>
                 </div>
 

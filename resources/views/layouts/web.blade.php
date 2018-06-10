@@ -85,7 +85,9 @@
 --}}
 
 <!-- Clients Section -->
+{{--
 @include('layouts.landing.clients')
+--}}
 
 {{--
 <!-- Contact Section -->
