@@ -16,7 +16,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $posts = $this->post->orderBy('id', 'DESC')->limit(3)->get();
+        $posts = $this->post->orderBy('id', 'DESC')->limit(6)->get();
 
         return view('web.home', compact('posts'));
     }

@@ -17,7 +17,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <img src="{{ asset('landing/img/features/feature1.png') }}" title="" class="img-responsive pull-right mtn30">
+                    <img src="{{ asset('uploads/'.$post->image->path.'') }}" title="{{ $post->image->name }}" class="img-responsive pull-right mtn30">
                 </div>
             </div>
 

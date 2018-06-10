@@ -12,7 +12,7 @@
 
                 <div class="col-md-4 col-sm-6 portfolio-item">
                     <a href="{{ route('app', [$post->slug]) }}" class="portfolio-link">
-                        <img src="{{ asset('landing/img/portfolio/roundicons.png') }}" class="img-responsive" alt="">
+                        <img src="{{ asset('uploads/'.$post->image->path.'') }}" class="img-responsive" alt="{{ $post->image->name }}">
                     </a>
                     <div class="portfolio-caption">
                         <a href="{{ route('app', [$post->slug]) }}">

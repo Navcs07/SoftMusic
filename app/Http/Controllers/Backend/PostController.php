@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Repositories\FileManagerRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Styde\Html\Facades\Alert;
@@ -14,10 +15,13 @@ class PostController extends Controller
 
     private $category;
 
-    public function __construct(Post $post, Category $category)
+    private $fileManager;
+
+    public function __construct(Post $post, Category $category, FileManagerRepository $fileManager)
     {
-        $this->post     = $post;
-        $this->category = $category;
+        $this->post        = $post;
+        $this->category    = $category;
+        $this->fileManager = $fileManager;
     }
 
     /**
@@ -60,12 +64,22 @@ class PostController extends Controller
             'image'       => 'required|image'
         ]);
 
-        $this->post->create([
+        $data = [
             'title'       => $request->get('title'),
             'slug'        => str_slug($request->get('title'), '-'),
             'category_id' => $request->get('category_id'),
             'content_1'   => $request->get('content_1'),
-        ]);
+        ];
+
+        //Save Files
+        if ($request->hasFile('image'))
+        {
+            $image = $this->fileManager->saveImage($request->file('image'));
+
+            $data = array_add($data, 'image_id', $image->id);
+        }
+
+        $this->post->create($data);
 
         Alert::success('Post creado');
 
@@ -98,19 +112,28 @@ class PostController extends Controller
     {
         //Process
         $this->validate($request,[
-            'title'       => 'required|unique:posts,title',
+            'title'       => 'required|unique:posts,title,'.$id,
             'content_1'   => 'required',
             'category_id' => 'required|exists:categories,id',
         ]);
 
         $post = $this->post->findOrFail($id);
 
-        $post->update([
+        $data = [
             'title'       => $request->get('title'),
             'slug'        => str_slug($request->get('title'), '-'),
             'category_id' => $request->get('category_id'),
             'content_1'   => $request->get('content_1'),
-        ]);
+        ];
+
+        if ($request->hasFile('image'))
+        {
+            $image = $this->fileManager->updateImage($post->image_id, $request->file('image'));
+
+            $data = array_add($data, 'image_id', $image->id);
+        }
+
+        $post->update($data);
 
         Alert::success('Post actualizado');
 
@@ -127,6 +150,12 @@ class PostController extends Controller
     public function destroy(Request $request, $id)
     {
         $post = $this->post->findOrFail($id);
+
+        // Remove Image
+        if (! is_null($post->image_id)) {
+
+            $this->fileManager->removeImage($post->image_id);
+        }
 
         $post->delete();
 

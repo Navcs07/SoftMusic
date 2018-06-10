@@ -9,30 +9,13 @@
                 <!-- Autoplay -->
                 <div class="slider-demo9">
                     <div class="slick-autoplay">
-                        <div class="slick-slide">
-                            <h1>1</h1>
-                        </div>
-                        <div class="slick-slide">
-                            <h1>2</h1>
-                        </div>
-                        <div class="slick-slide">
-                            <h1>3</h1>
-                        </div>
-                        <div class="slick-slide">
-                            <h1>4</h1>
-                        </div>
-                        <div class="slick-slide">
-                            <h1>5</h1>
-                        </div>
-                        <div class="slick-slide">
-                            <h1>6</h1>
-                        </div>
-                        <div class="slick-slide">
-                            <h1>7</h1>
-                        </div>
-                        <div class="slick-slide">
-                            <h1>8</h1>
-                        </div>
+                        @foreach($posts as $post)
+                            <div class="slick-slide">
+                                <a href="{{ route('app', [$post->slug]) }}" class="portfolio-link">
+                                    <img src="{{ asset('uploads/'.$post->image->path.'') }}" class="img-responsive" alt="{{ $post->image->name }}">
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -53,7 +36,7 @@
 
     <style>
         /* demo slider styles */
-        .slick-slide h1 {
+        .slick-slide img {
             background: #FFF;
             border: 1px solid #DDD;
             height: 200px;
@@ -64,11 +47,11 @@
             font-size: 32px;
             color: #3498db;
         }
-        .center-mode h1 {
+        .center-mode img {
             opacity: 0.8;
             transition: all 300ms ease;
         }
-        .center-mode .slick-center h1 {
+        .center-mode .slick-center img {
             color: #e67e22;
             opacity: 1;
             -webkit-transform: scale(1.08);
