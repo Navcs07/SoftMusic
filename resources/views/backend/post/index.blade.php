@@ -39,6 +39,7 @@
                                 <th>ID</th>
                                 <th>Titulo</th>
                                 <th>Cátegoria</th>
+                                <th>Enlaces</th>
                                 <th>Actualización</th>
                                 <th>Acciones</th>
                             </tr>
@@ -49,6 +50,7 @@
                                     <td>{{ $post->id }}</td>
                                     <td>{{ $post->title }}</td>
                                     <td>{{ $post->category->name }}</td>
+                                    <td>{{ $post->links->count() }} enlaces</td>
                                     <td>{{ $post->updated_at->diffForHumans() }}</td>
                                     <td class="actions-buttons">
                                         <a href="{{ route('post.edit', [$post->id]) }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top">
