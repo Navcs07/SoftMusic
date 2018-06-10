@@ -38,6 +38,16 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
             Route::delete('delete/{id}', 'UserController@destroy')->name('user.delete');
         });
 
+        Route::prefix('category')->group(function () {
+
+            Route::get('/', 'CategoryController@index')->name('category.index');
+            Route::get('create', 'CategoryController@create')->name('category.create');
+            Route::post('store', 'CategoryController@store')->name('category.store');
+            Route::get('edit/{id}', 'CategoryController@edit')->name('category.edit');
+            Route::put('update/{id}', 'CategoryController@update')->name('category.update');
+            Route::delete('delete/{id}', 'CategoryController@destroy')->name('category.delete');
+        });
+
         Route::prefix('post')->group(function () {
 
             Route::get('/', 'PostController@index')->name('post.index');

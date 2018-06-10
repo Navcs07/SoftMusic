@@ -11,14 +11,10 @@
     <ul class="nav navbar-nav navbar-right">
 
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown"> <img src="{{ asset('assets/img/avatars/1.jpg') }}" alt="avatar" class="mw30 br64 mr15"> John.Smith
+            <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown"> <img src="{{ asset('assets/img/avatars/placeholder.png') }}" alt="avatar" class="mw30 br64 mr15"> {{ auth()->user()->name }}
                 <span class="caret caret-tp hidden-xs"></span>
             </a>
             <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
-                <li class="list-group-item">
-                    <a href="#" class="animated animated-short fadeInUp">
-                        <span class="fa fa-gear"></span> Account Settings </a>
-                </li>
                 <li class="list-group-item">
                     <a class="animated animated-short fadeInUp" href="{{ route('logout') }} "
                        onclick="event.preventDefault();

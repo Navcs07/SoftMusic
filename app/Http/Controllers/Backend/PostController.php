@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
+    private $post;
+
+    public function __construct(Post $post)
+    {
+        $this->post = $post;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        dd($this->post->all());
     }
 
     /**
