@@ -32,9 +32,12 @@
             <li>
                 <a class="page-scroll" href="{{ route('login') }}">Login</a>
             </li>
+            <!--
+                *** Menu para Registrar Nuevos Usuarios ***
             <li>
                 <a class="page-scroll" href="{{ route('register') }}">Registro</a>
             </li>
+            -->
         @endif
     </ul>
 </div>
