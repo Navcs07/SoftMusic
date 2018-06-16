@@ -386,6 +386,8 @@ footer ul.quicklinks {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+    opacity: 1;
+  filter: alpha (opacity=50);
 }
 #hero:after {
   z-index: -1;
@@ -395,7 +397,10 @@ footer ul.quicklinks {
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(60, 83, 111, 0.85);
+  /* background-color: rgba(60, 83, 111, 0.85);*/
+  
+  opacity: 1;
+  filter: alpha (opacity=50);
 }
 #hero .intro-text {
   padding-top: 200px;

@@ -20,6 +20,8 @@
         </div>
     @endif
 
-    content
+    <div align="center">
+        <img src="{{ asset('landing/img/logo-white.png') }}">
+    </div>
 
 @stop

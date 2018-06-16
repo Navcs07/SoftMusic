@@ -54,7 +54,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="{{ route('home') }}">{{ config('app.name', 'Laravel') }}</a>
+            <a class="navbar-brand page-scroll" href="{{ route('home') }}"><img src="{{ asset('assets/img/logos/logo.png') }}"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
